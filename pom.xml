@@ -27,7 +27,7 @@
 
   <groupId>io.fabric8</groupId>
   <artifactId>zjsonpatch</artifactId>
-  <version>0.3-SNAPSHOT</version>
+  <version>0.2.3</version>
   <packaging>bundle</packaging>
 
   <name>zjsonpatch</name>
