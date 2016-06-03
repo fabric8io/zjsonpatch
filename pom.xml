@@ -27,7 +27,7 @@
 
   <groupId>io.fabric8</groupId>
   <artifactId>zjsonpatch</artifactId>
-  <version>0.3-SNAPSHOT</version>
+  <version>0.2.2</version>
 
   <name>zjsonpatch</name>
   <description>Java Library to find / apply JSON Patches according to RFC 6902</description>
