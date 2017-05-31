@@ -37,7 +37,7 @@
 
   <scm>
     <connection>scm:git:https://github.com/fabric8io/zjsonpatch.git</connection>
-    <developerConnection>scm:git:https://github.com/fabric8io/zjsonpatch.git</developerConnection>
+    <developerConnection>scm:git:git@github.com:fabric8io/zjsonpatch.git</developerConnection>
     <tag>HEAD</tag>
     <url>https://github.com/fabric8io/zjsonpatch</url>
   </scm>
@@ -203,6 +203,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
+        <configuration>
+          <releaseProfiles>release</releaseProfiles>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
