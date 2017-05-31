@@ -15,19 +15,15 @@
  */
 package io.fabric8.zjsonpatch;
 
-import java.io.IOException;
-import java.util.Collection;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import io.fabric8.zjsonpatch.PatchTestCase;
-import org.junit.runners.Parameterized;
+import java.util.List;
 
-/**
- * @author ctranxuan (streamdata.io).
- */
-public class RemoveOperationTest extends AbstractTest {
-
-    @Parameterized.Parameters
-    public static Collection<PatchTestCase> data() throws IOException {
-        return PatchTestCase.load("remove");
-    }
+interface JsonPatchProcessor {
+    void remove(List<String> path);
+    void replace(List<String> path, JsonNode value);
+    void add(List<String> path, JsonNode value);
+    void move(List<String> fromPath, List<String> toPath);
+    void copy(List<String> fromPath, List<String> toPath);
+    void test(List<String> path, JsonNode value);
 }

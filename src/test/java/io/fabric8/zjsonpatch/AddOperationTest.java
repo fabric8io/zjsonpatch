@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *         http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,13 +15,19 @@
  */
 package io.fabric8.zjsonpatch;
 
+import org.junit.runners.Parameterized;
+
 import java.io.IOException;
+import java.util.Collection;
 
 /**
  * @author ctranxuan (streamdata.io).
  */
 public class AddOperationTest extends AbstractTest {
-    public AddOperationTest() throws IOException {
-        super("add");
+
+    @Parameterized.Parameters
+    public static Collection<PatchTestCase> data() throws IOException {
+        return PatchTestCase.load("add");
     }
+
 }

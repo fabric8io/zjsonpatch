@@ -15,19 +15,20 @@
  */
 package io.fabric8.zjsonpatch;
 
-import java.io.IOException;
-import java.util.Collection;
-
-import io.fabric8.zjsonpatch.PatchTestCase;
-import org.junit.runners.Parameterized;
-
 /**
- * @author ctranxuan (streamdata.io).
+ * User: holograph
+ * Date: 03/08/16
  */
-public class RemoveOperationTest extends AbstractTest {
+public class InvalidJsonPatchException extends JsonPatchApplicationException {
+    public InvalidJsonPatchException(String message) {
+        super(message);
+    }
 
-    @Parameterized.Parameters
-    public static Collection<PatchTestCase> data() throws IOException {
-        return PatchTestCase.load("remove");
+    public InvalidJsonPatchException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public InvalidJsonPatchException(Throwable cause) {
+        super(cause);
     }
 }

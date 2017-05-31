@@ -1,27 +1,27 @@
 # This is an implementation of  [RFC 6902 JSON Patch](http://tools.ietf.org/html/rfc6902) written in Java.
 
-##Description & Use-Cases
+## Description & Use-Cases
 - Java Library to find / apply JSON Patches according to RFC 6902.
 - JSON Patch defines a JSON document structure for representing changes to a JSON document.
 - It can be used to avoid sending a whole document when only a part has changed, thus reducing network bandwidth requirements if data (in json format) is required to send across multiple systems over network or in case of multi DC transfer.
 - When used in combination with the HTTP PATCH method as per [RFC 5789 HTTP PATCH](http://tools.ietf.org/html/rfc5789), it will do partial updates for HTTP APIs in a standard  way.
 
 
-###Compatible with : Java 6 / 7 / 8
+### Compatible with : Java 6 / 7 / 8
 
-##Code Coverage
+## Code Coverage
 Package      |	Class, % 	 |  Method, % 	   |  Line, %           |
 -------------|---------------|-----------------|--------------------|
 all classes  |	100% (6/ 6)  |	93.6% (44/ 47) |  96.2% (332/ 345)  |
 
-##Complexity
+## Complexity
 - To find JsonPatch : Ω(N+M) ,N and M represents number of keys in first and second json respectively / O(summation of la*lb) where la , lb represents jsonArray of length la / lb of against same key in first and second json ,since LCS is used to find difference between 2 json arrays there of order of quadratic.
 - To Optimize Diffs ( compact move and remove into Move ) : Ω(D) / O(D*D) where D represents number of diffs obtained before compaction into Move operation.
 - To Apply Diff : O(D) where D represents number of diffs
 
 ### How to use:
 
-###Current Version : 0.2.1
+### Current Version : 0.3.1
 
 Add following to `<dependencies/>` section of your pom.xml -
 
@@ -30,8 +30,7 @@ Add following to `<dependencies/>` section of your pom.xml -
 <artifactId>zjsonpatch</artifactId>
 <version>{version}</version>
 ```
-- Avaibale on maven cental repository
-
+- Available on maven central repository
 
 ## API Usage
 
@@ -48,6 +47,8 @@ The algorithm which computes this JsonPatch currently generates following operat
  - REMOVE
  - REPLACE
  - MOVE
+ - COPY
+ - TEST
  
 
 ### Apply Json Patch
@@ -70,7 +71,7 @@ Following patch will be returned:
 ```json
 [{"op":"MOVE","from":"/a","path":"/b/2","value":0}]
 ```
-here o represents Operation, p represent fromPath from where value should be moved, tp represents toPath where value should be moved and v represents value to move.
+here 'op' represents Operation, 'from' represent path from where value should be moved, 'path' represents where value should be moved and value represents value to move.
 
 
 ### Tests:

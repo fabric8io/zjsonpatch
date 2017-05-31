@@ -6,7 +6,7 @@
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
 
-            http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
@@ -72,9 +72,11 @@
     <deploy.plugin.version>2.8.2</deploy.plugin.version>
     <maven.compiler.argument.target>${maven.compiler.target}</maven.compiler.argument.target>
     <maven.compiler.argument.source>${maven.compiler.source}</maven.compiler.argument.source>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <maven.enforcer.plugin.version>1.3.1</maven.enforcer.plugin.version>
+
+    <jackson.version>2.8.5</jackson.version>
 
     <osgi.import>
       *
@@ -226,7 +228,7 @@
       <plugin>
         <groupId>com.mycila</groupId>
         <artifactId>license-maven-plugin</artifactId>
-        <version>2.11</version>
+        <version>3.0</version>
         <configuration>
           <header>header.txt</header>
           <aggregate>true</aggregate>
@@ -234,13 +236,9 @@
             <owner>Red Hat, Inc.</owner>
           </properties>
           <excludes>
-            <exclude>.editorconfig</exclude>
-            <exclude>license.txt</exclude>
-            <exclude>vendor/**/*</exclude>
-            <exclude>generate</exclude>
-            <exclude>.editorconfig</exclude>
-            <exclude>.openshift-version</exclude>
-            <exclude>glide.*</exclude>
+            <exclude>LICENSE</exclude>
+            <exclude>Jenkinsfile</exclude>
+            <exclude>mvnw</exclude>
           </excludes>
           <mapping>
             <go>JAVADOC_STYLE</go>
@@ -252,6 +250,7 @@
       <plugin>
         <groupId>org.apache.felix</groupId>
         <artifactId>maven-bundle-plugin</artifactId>
+        <version>3.3.0</version>
         <extensions>true</extensions>
         <executions>
           <execution>
@@ -282,12 +281,12 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.3.2</version>
+      <version>${jackson.version}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.3.2</version>
+      <version>${jackson.version}</version>
     </dependency>
     <dependency>
       <scope>test</scope>
@@ -299,7 +298,7 @@
       <scope>test</scope>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.2</version>
+      <version>4.12</version>
     </dependency>
   </dependencies>
   <distributionManagement>

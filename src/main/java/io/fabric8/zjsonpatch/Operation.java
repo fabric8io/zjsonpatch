@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *         http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,13 +29,17 @@ enum Operation {
     ADD("add"),
     REMOVE("remove"),
     REPLACE("replace"),
-    MOVE("move");
+    MOVE("move"),
+    COPY("copy"),
+    TEST("test");
 
     private final static Map<String, Operation> OPS = immutableMap(
             ADD.rfcName, ADD,
             REMOVE.rfcName, REMOVE,
             REPLACE.rfcName, REPLACE,
-            MOVE.rfcName, MOVE
+            MOVE.rfcName, MOVE,
+            COPY.rfcName, COPY,
+            TEST.rfcName, TEST
             );
 
     private String rfcName;
@@ -45,8 +49,10 @@ enum Operation {
     }
 
     public static Operation fromRfcName(String rfcName) {
-        checkNotNull(rfcName, "rfcName cannot be null");
-        return checkNotNull(OPS.get(rfcName.toLowerCase()), "unknown / unsupported operation %s", rfcName);
+        if (rfcName == null) throw new InvalidJsonPatchException("rfcName cannot be null");
+        Operation op = OPS.get(rfcName.toLowerCase());
+        if (op == null) throw new InvalidJsonPatchException("unknown / unsupported operation " + rfcName);
+        return op;
     }
 
     public String rfcName() {

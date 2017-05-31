@@ -15,19 +15,15 @@
  */
 package io.fabric8.zjsonpatch;
 
-import java.io.IOException;
-import java.util.Collection;
-
-import io.fabric8.zjsonpatch.PatchTestCase;
-import org.junit.runners.Parameterized;
+import java.util.EnumSet;
 
 /**
- * @author ctranxuan (streamdata.io).
+ * Created by tomerga on 04/09/2016.
  */
-public class RemoveOperationTest extends AbstractTest {
+public enum CompatibilityFlags {
+    MISSING_VALUES_AS_NULLS;
 
-    @Parameterized.Parameters
-    public static Collection<PatchTestCase> data() throws IOException {
-        return PatchTestCase.load("remove");
+    public static EnumSet<CompatibilityFlags> defaults() {
+        return EnumSet.noneOf(CompatibilityFlags.class);
     }
 }
